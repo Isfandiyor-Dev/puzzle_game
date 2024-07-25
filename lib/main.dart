@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:puzzle_game/controllers/stopwatch_controller.dart';
+import 'package:puzzle_game/controllers/tiles_controller.dart';
+import 'package:puzzle_game/ui/screens/home_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,11 +13,22 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return MultiProvider(
+      providers: [
+         ChangeNotifierProvider(
+          create: (context) => TilesController(),
         ),
+          ChangeNotifierProvider(
+          create: (context) => StopWatchController(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          colorSchemeSeed: Colors.green,
+        ),
+        home: const HomeScreen(),
       ),
     );
   }
