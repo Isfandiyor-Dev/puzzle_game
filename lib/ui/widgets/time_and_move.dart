@@ -4,7 +4,8 @@ import 'package:puzzle_game/controllers/stopwatch_controller.dart';
 import 'package:puzzle_game/controllers/tiles_controller.dart';
 
 class TimeAndMove extends StatelessWidget {
-  const TimeAndMove({super.key});
+  final double width;
+  const TimeAndMove({super.key, required this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +13,16 @@ class TimeAndMove extends StatelessWidget {
     final controller = Provider.of<TilesController>(context);
 
     return Container(
-      width: 200,
-      height: 70,
+      width: width * 0.5,
+      height: width * 0.2,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.onSecondary,
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
           BoxShadow(
             color: Colors.grey,
-            spreadRadius: 2,
-            blurRadius: 10,
+            spreadRadius: 3,
+            blurRadius: 15,
           )
         ],
       ),

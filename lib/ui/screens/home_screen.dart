@@ -29,15 +29,17 @@ class _HomeScreenState extends State<HomeScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     widthScreen = MediaQuery.of(context).size.width;
-    print('Yangiladi');
   }
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.inverseSurface,
       appBar: AppBar(
-        toolbarHeight: 90,
+        toolbarHeight: height * 0.09,
         backgroundColor: Theme.of(context).colorScheme.onPrimary,
         title: const Text(
           "15 Puzzle",
@@ -50,18 +52,18 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(25.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                NewGameBtn(),
-                TimeAndMove(),
+                NewGameBtn(width: width),
+                TimeAndMove(width: width),
               ],
             ),
-            const SizedBox(height: 50),
+            SizedBox(height: height * 0.06),
             SizedBox(
               width: double.infinity,
               height: widthScreen,
@@ -87,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: height * 0.020),
             Consumer<StopWatchController>(
               builder: (context, watchController, child) {
                 return InkWell(

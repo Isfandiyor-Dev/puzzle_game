@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:puzzle_game/data/models/tile.dart';
@@ -9,21 +8,21 @@ class TilesController extends ChangeNotifier {
   int movesNumber = 0;
 
   bool _isCanMoveTile(int index, int nullTileIndex) {
-    int row = index ~/ 4;
-    int col = index % 4;
-    int nullRow = nullTileIndex ~/ 4;
-    int nullCol = nullTileIndex % 4;
-    return (row == nullRow && (col - nullCol).abs() == 1) ||
-        (col == nullCol && (row - nullRow).abs() == 1);
+    List<int> koorTiles = [
+      nullTileIndex - 1,
+      nullTileIndex + 1,
+      nullTileIndex - 4,
+      nullTileIndex + 4,
+    ];
+    return koorTiles.contains(index);
   }
 
   void initialTiles() {
     movesNumber = 0;
-    int nullTileIndex = Random().nextInt(16);
+
     tiles = List.generate(15, (index) {
       return Tile(
         number: index + 1,
-        canMove: false,
       );
     });
 
@@ -34,11 +33,6 @@ class TilesController extends ChangeNotifier {
 
     tiles.shuffle();
 
-    for (int i = 0; i < tiles.length; i++) {
-      if (tiles[i].isEmptyTile) continue;
-      tiles[i].canMove = _isCanMoveTile(i, nullTileIndex);
-    }
-
     notifyListeners();
   }
 
@@ -47,11 +41,6 @@ class TilesController extends ChangeNotifier {
     if (_isCanMoveTile(index, nullTileIndex)) {
       tiles[nullTileIndex] = tiles[index];
       tiles[index] = Tile(number: null, isEmptyTile: true);
-
-      for (int i = 0; i < tiles.length; i++) {
-        if (tiles[i].isEmptyTile) continue;
-        tiles[i].canMove = _isCanMoveTile(i, nullTileIndex);
-      }
 
       movesNumber++;
 

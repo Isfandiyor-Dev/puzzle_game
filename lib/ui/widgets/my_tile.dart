@@ -46,26 +46,22 @@ class MyTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Provider.of<TilesController>(context, listen: false);
     return GestureDetector(
-      onTap: tile.canMove
-          ? null
-          : () {
-              controller.moveTile(index);
-              if (controller.checkWon()) {
-                Provider.of<StopWatchController>(context, listen: false).stop();
-                showDialog(
-                  context: context,
-                  builder: (ctx) => const MyWinDialog(),
-                );
-              } else if (!Provider.of<StopWatchController>(context,
-                      listen: false)
-                  .isRunning) {
-                Provider.of<StopWatchController>(context, listen: false)
-                    .start();
-              }
-            },
+      onTap: () {
+        controller.moveTile(index);
+        if (controller.checkWon()) {
+          Provider.of<StopWatchController>(context, listen: false).stop();
+          showDialog(
+            context: context,
+            builder: (ctx) => const MyWinDialog(),
+          );
+        } else if (!Provider.of<StopWatchController>(context, listen: false)
+            .isRunning) {
+          Provider.of<StopWatchController>(context, listen: false).start();
+        }
+      },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 100),
-        curve: Curves.ease,
+        duration: const Duration(milliseconds: 80),
+        curve: Curves.bounceInOut,
         decoration: tile.isEmptyTile ? emptyTile() : fillTile(),
         margin: const EdgeInsets.all(4.0),
         child: Center(

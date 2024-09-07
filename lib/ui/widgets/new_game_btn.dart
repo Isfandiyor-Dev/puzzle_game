@@ -4,7 +4,8 @@ import 'package:puzzle_game/controllers/stopwatch_controller.dart';
 import 'package:puzzle_game/controllers/tiles_controller.dart';
 
 class NewGameBtn extends StatelessWidget {
-  const NewGameBtn({super.key});
+  final double width;
+  const NewGameBtn({super.key, required this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,8 @@ class NewGameBtn extends StatelessWidget {
         Provider.of<StopWatchController>(context, listen: false).reset();
       },
       child: Ink(
-        padding: const EdgeInsets.all(22),
+        width: width * 0.35,
+        height: width * 0.2,
         decoration: BoxDecoration(
           color: Colors.cyanAccent[700],
           borderRadius: BorderRadius.circular(10),
@@ -26,13 +28,15 @@ class NewGameBtn extends StatelessWidget {
             )
           ],
         ),
-        child: Text(
-          "NEW GAME",
-          style: TextStyle(
-            fontFamily: 'Rubik',
-            fontSize: 17,
-            color: Colors.grey[900],
-            fontWeight: FontWeight.w500,
+        child: Center(
+          child: Text(
+            "NEW GAME",
+            style: TextStyle(
+              fontFamily: 'Rubik',
+              fontSize: 17,
+              color: Colors.grey[900],
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ),

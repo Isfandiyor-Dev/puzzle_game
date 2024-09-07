@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:puzzle_game/controllers/stopwatch_controller.dart';
 import 'package:puzzle_game/controllers/tiles_controller.dart';
 
 class MyWinDialog extends StatelessWidget {
@@ -8,6 +9,8 @@ class MyWinDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<TilesController>(context, listen: false);
+    final stopWatchController =
+        Provider.of<StopWatchController>(context, listen: false);
     return AlertDialog(
       title: const Text(
         "Excellent!",
@@ -38,6 +41,7 @@ class MyWinDialog extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
             controller.initialTiles();
+            stopWatchController.reset();
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 15),
