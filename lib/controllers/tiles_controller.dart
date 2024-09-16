@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:puzzle_game/data/models/tile.dart';
+import 'package:puzzle_game/models/tile.dart';
 
 class TilesController extends ChangeNotifier {
   List<Tile> tiles = [];

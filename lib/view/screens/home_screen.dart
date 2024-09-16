@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:puzzle_game/controllers/stopwatch_controller.dart';
 import 'package:puzzle_game/controllers/tiles_controller.dart';
-import 'package:puzzle_game/data/models/tile.dart';
-import 'package:puzzle_game/ui/widgets/my_tile.dart';
-import 'package:puzzle_game/ui/widgets/new_game_btn.dart';
-import 'package:puzzle_game/ui/widgets/time_and_move.dart';
+import 'package:puzzle_game/models/tile.dart';
+import 'package:puzzle_game/view/widgets/my_tile.dart';
+import 'package:puzzle_game/view/widgets/new_game_btn.dart';
+import 'package:puzzle_game/view/widgets/time_and_move.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

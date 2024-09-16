@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:puzzle_game/controllers/stopwatch_controller.dart';
 import 'package:puzzle_game/controllers/tiles_controller.dart';
-import 'package:puzzle_game/ui/screens/home_screen.dart';
+import 'package:puzzle_game/view/screens/home_screen.dart';
 
 void main() {
   runApp(const MainApp());

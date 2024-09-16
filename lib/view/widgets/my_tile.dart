@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:puzzle_game/controllers/stopwatch_controller.dart';
 import 'package:puzzle_game/controllers/tiles_controller.dart';
-import 'package:puzzle_game/data/models/tile.dart';
-import 'package:puzzle_game/ui/widgets/my_win_dialog.dart';
+import 'package:puzzle_game/models/tile.dart';
+import 'package:puzzle_game/view/widgets/my_win_dialog.dart';
 
 // ignore: must_be_immutable
 class MyTile extends StatelessWidget {
