@@ -4,7 +4,8 @@ import 'package:puzzle_game/controllers/stopwatch_controller.dart';
 import 'package:puzzle_game/controllers/tiles_controller.dart';
 
 class MyWinDialog extends StatelessWidget {
-  const MyWinDialog({super.key});
+  const MyWinDialog({super.key, required this.width});
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -12,19 +13,20 @@ class MyWinDialog extends StatelessWidget {
     final stopWatchController =
         Provider.of<StopWatchController>(context, listen: false);
     return AlertDialog(
-      title: const Text(
+      title: Text(
         "Excellent!",
         style: TextStyle(
           fontFamily: 'Rubik',
           fontWeight: FontWeight.w600,
+          fontSize: width * 0.08,
         ),
         textAlign: TextAlign.center,
       ),
       content: Text(
         "It took you ${controller.movesNumber} moves",
-        style: const TextStyle(
+        style: TextStyle(
           fontFamily: 'Rubik',
-          fontSize: 20,
+          fontSize: width * 0.05,
           fontWeight: FontWeight.w500,
         ),
         textAlign: TextAlign.center,
@@ -49,7 +51,7 @@ class MyWinDialog extends StatelessWidget {
               "Play Again",
               style: TextStyle(
                 fontFamily: 'Rubik',
-                fontSize: 17,
+                fontSize: width * 0.05,
                 color: Colors.grey[200],
                 fontWeight: FontWeight.w500,
               ),

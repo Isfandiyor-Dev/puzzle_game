@@ -42,7 +42,7 @@ class TimeAndMove extends StatelessWidget {
                   "TIME",
                   style: TextStyle(
                     fontFamily: 'Rubik',
-                    fontSize: 15,
+                    fontSize: width * 0.045,
                     color: Colors.grey[200],
                   ),
                 ),
@@ -50,7 +50,7 @@ class TimeAndMove extends StatelessWidget {
                   stopWatchController.formattedTime,
                   style: TextStyle(
                     fontFamily: 'Rubik',
-                    fontSize: 20,
+                    fontSize: width * 0.05,
                     color: Colors.grey[200],
                     fontWeight: FontWeight.w500,
                   ),
@@ -66,7 +66,7 @@ class TimeAndMove extends StatelessWidget {
                   "MOVE",
                   style: TextStyle(
                     fontFamily: 'Rubik',
-                    fontSize: 15,
+                    fontSize: width * 0.045,
                     color: Colors.grey[200],
                   ),
                 ),
@@ -74,7 +74,7 @@ class TimeAndMove extends StatelessWidget {
                   controller.movesNumber.toString(),
                   style: TextStyle(
                     fontFamily: 'Rubik',
-                    fontSize: 20,
+                    fontSize: width * 0.05,
                     color: Colors.grey[200],
                     fontWeight: FontWeight.w500,
                   ),

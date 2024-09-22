@@ -33,7 +33,7 @@ class NewGameBtn extends StatelessWidget {
             "NEW GAME",
             style: TextStyle(
               fontFamily: 'Rubik',
-              fontSize: 17,
+              fontSize: width * 0.048,
               color: Colors.grey[900],
               fontWeight: FontWeight.w500,
             ),

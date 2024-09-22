@@ -9,15 +9,17 @@ import 'package:puzzle_game/view/widgets/my_win_dialog.dart';
 class MyTile extends StatelessWidget {
   Tile tile;
   int index;
+  final double width;
   MyTile({
     super.key,
     required this.tile,
     required this.index,
+    required this.width,
   });
 
   Decoration emptyTile() {
     return BoxDecoration(
-      color: Colors.green[900]!.withOpacity(0.2),
+      color: const Color(0xFF1B5E20).withOpacity(0.2),
       borderRadius: BorderRadius.circular(8.0),
     );
   }
@@ -27,7 +29,7 @@ class MyTile extends StatelessWidget {
       gradient: LinearGradient(
         colors: tile.number == index + 1
             ? [Colors.green.shade200, Colors.green.shade800]
-            : [Colors.teal.shade200, Colors.teal.shade800],
+            : [const Color(0xFF80CBC4), Colors.teal.shade800],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       ),
@@ -52,7 +54,7 @@ class MyTile extends StatelessWidget {
           Provider.of<StopWatchController>(context, listen: false).stop();
           showDialog(
             context: context,
-            builder: (ctx) => const MyWinDialog(),
+            builder: (ctx) => MyWinDialog(width: width),
           );
         } else if (!Provider.of<StopWatchController>(context, listen: false)
             .isRunning) {
@@ -69,9 +71,9 @@ class MyTile extends StatelessWidget {
               ? null
               : Text(
                   tile.number.toString(),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Rubik',
-                    fontSize: 30,
+                    fontSize: width * 0.08,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

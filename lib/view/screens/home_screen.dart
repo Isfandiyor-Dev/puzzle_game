@@ -15,8 +15,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late double widthScreen;
-
+  late double width;
+  late double height;
   @override
   void initState() {
     super.initState();
@@ -28,14 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    widthScreen = MediaQuery.of(context).size.width;
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
   }
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.inverseSurface,
       appBar: AppBar(
@@ -53,7 +51,10 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.symmetric(
+          horizontal: width * 0.05,
+          vertical: 20,
+        ),
         child: Column(
           children: [
             Row(
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: height * 0.06),
             SizedBox(
               width: double.infinity,
-              height: widthScreen,
+              height: width,
               child: Consumer<TilesController>(
                 builder: (context, controllerTiles, child) {
                   return GridView.builder(
@@ -83,6 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       return MyTile(
                         index: index,
                         tile: tile,
+                        width: width,
                       );
                     },
                   );
@@ -102,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: Ink(
                     width: double.infinity,
-                    padding: const EdgeInsets.all(15),
+                    padding: EdgeInsets.all(width * 0.025),
                     decoration: BoxDecoration(
                       color: Colors.cyan[700],
                       borderRadius: BorderRadius.circular(10),
@@ -119,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         watchController.isRunning ? 'Pause' : 'Play',
                         style: TextStyle(
                           fontFamily: 'Rubik',
-                          fontSize: 25,
+                          fontSize: width * 0.06,
                           color: Colors.grey[900],
                           fontWeight: FontWeight.w500,
                         ),
