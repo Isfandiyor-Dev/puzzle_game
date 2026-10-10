@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:puzzle_game/controllers/stopwatch_controller.dart';
@@ -34,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    log(Theme.of(context).colorScheme.inverseSurface.toString());
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.inverseSurface,
       appBar: AppBar(
